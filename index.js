@@ -14,18 +14,20 @@ app.use(express.json())
 app.get('/products', (req,res)=>{
     getRequestCount++;
     console.log(`> products GET: received request`);
+    console.log(`< products GET: sending response`);
+    console.log(`Processed Request Count --> Get: ${getRequestCount}, Post: ${postRequestCount}`);
     res.json(products)
 })
 
 // Handle POST requests
 app.post('/products',(req,res)=>{
-
     postRequestCount++;
-    const bodyData = req.body
-    console.log(bodyData)
-    console.log(`Sending Response`)
-    products.push(bodyData)
-    res.json(bodyData)
+    const bodyData = req.body;
+    products.push(bodyData);
+    console.log(`> products POST: received request`);
+    console.log(`< products POST: sending response`);
+    console.log(`Processed Request Count --> Get: ${getRequestCount}, Post: ${postRequestCount}`);
+    res.json(bodyData);
 })
 
 // Handle DELETE requests
