@@ -10,7 +10,13 @@ app.get('/products', (req,res)=>{
     res.json(products)
 })
 
+app.post('/products',(req,res)=>{
 
+    const bodyData = req.body
+    // console.log(bodyData)
+    products.push(bodyData)
+    res.json({messsage:"Post request"})
+})
 
 
 app.listen(5000, ()=>{
