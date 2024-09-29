@@ -10,12 +10,14 @@ let postRequestCount = 0;
 
 app.use(express.json())
 
+// Handle GET requests
 app.get('/products', (req,res)=>{
     getRequestCount++;
-    console.log(`Received Request`)
+    console.log(`> products GET: received request`);
     res.json(products)
 })
 
+// Handle POST requests
 app.post('/products',(req,res)=>{
 
     postRequestCount++;
@@ -26,8 +28,9 @@ app.post('/products',(req,res)=>{
     res.json(bodyData)
 })
 
+// Handle DELETE requests
 app.delete('/products',(req,res)=>{
-    products = []
+    products = [] // Clear all products
     res.json({message:"All products deleted"})
 })
 
