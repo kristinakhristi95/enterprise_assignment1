@@ -27,7 +27,7 @@ app.post('/products',(req,res)=>{
     console.log(`> products POST: received request`);
     console.log(`< products POST: sending response`);
     console.log(`Processed Request Count --> Get: ${getRequestCount}, Post: ${postRequestCount}`);
-    res.json(bodyData);
+    res.status(201).send('Product added successfully');
 })
 
 // Handle DELETE requests
@@ -36,8 +36,9 @@ app.delete('/products',(req,res)=>{
     res.json({message:"All products deleted"})
 })
 
-// Start-up logging
+// Starting server
 app.listen(port, ()=>{
     console.log(`Server is listening at http://127.0.0.1:${port}`);
     console.log(`Endpoints:\nhttp://127.0.0.1:${port}/products method: GET, POST, DELETE`);
 })
+
